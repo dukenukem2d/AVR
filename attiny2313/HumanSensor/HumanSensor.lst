@@ -1,0 +1,639 @@
+   1               		.file	"HumanSensor.cpp"
+   2               	__SP_L__ = 0x3d
+   3               	__SREG__ = 0x3f
+   4               	__tmp_reg__ = 0
+   5               	__zero_reg__ = 1
+   6               		.stabs	"/home/duke/avr/attiny2313/HumanSensor/",100,0,4,.Ltext0
+   7               		.stabs	"HumanSensor.cpp",100,0,4,.Ltext0
+   8               		.text
+   9               	.Ltext0:
+  10               		.stabs	"gcc2_compiled.",60,0,0,0
+  11               		.stabs	"__uint24:t(0,1)=@s24;r(0,1);0;077777777;",128,0,0,0
+  12               		.stabs	"__int24:t(0,2)=@s24;r(0,2);040000000;037777777;",128,0,0,0
+  13               		.stabs	"__builtin_va_list:t(0,3)=*(0,4)=(0,4)",128,0,0,0
+  14               		.stabs	"complex long double:t(0,5)=R3;8;0;",128,0,0,0
+  15               		.stabs	"complex double:t(0,6)=R3;8;0;",128,0,0,0
+  16               		.stabs	"complex float:t(0,7)=R3;8;0;",128,0,0,0
+  17               		.stabs	"complex int:t(0,8)=s4real:(0,9)=r(0,9);-32768;32767;,0,16;imag:(0,9),16,16;;",128,0,0,0
+  18               		.stabs	"long long unsigned int:t(0,10)=@s64;r(0,10);0;01777777777777777777777;",128,0,0,0
+  19               		.stabs	"long unsigned int:t(0,11)=@s32;r(0,11);0;037777777777;",128,0,0,0
+  20               		.stabs	"unsigned int:t(0,12)=r(0,12);0;0177777;",128,0,0,0
+  21               		.stabs	"unsigned char:t(0,13)=@s8;r(0,13);0;255;",128,0,0,0
+  22               		.stabs	"long long int:t(0,14)=@s64;r(0,14);01000000000000000000000;0777777777777777777777;",128,0,
+  23               		.stabs	"long int:t(0,15)=@s32;r(0,15);020000000000;017777777777;",128,0,0,0
+  24               		.stabs	"int:t(0,9)",128,0,0,0
+  25               		.stabs	"signed char:t(0,16)=@s8;r(0,16);-128;127;",128,0,0,0
+  26               		.stabs	"char:t(0,17)=r(0,17);0;127;",128,0,0,0
+  27               		.stabs	"signed:t(0,9)",128,0,0,0
+  28               		.stabs	"unsigned long:t(0,11)",128,0,0,0
+  29               		.stabs	"long long unsigned:t(0,10)",128,0,0,0
+  30               		.stabs	"short int:t(0,18)=r(0,18);-32768;32767;",128,0,0,0
+  31               		.stabs	"short unsigned int:t(0,19)=r(0,19);0;0177777;",128,0,0,0
+  32               		.stabs	"unsigned short:t(0,19)",128,0,0,0
+  33               		.stabs	"float:t(0,20)=r(0,9);4;0;",128,0,0,0
+  34               		.stabs	"double:t(0,21)=r(0,9);4;0;",128,0,0,0
+  35               		.stabs	"long double:t(0,22)=r(0,9);4;0;",128,0,0,0
+  36               		.stabs	"short _Fract:t(0,23)=r(0,9);1;0;",128,0,0,0
+  37               		.stabs	"long _Fract:t(0,24)=r(0,9);4;0;",128,0,0,0
+  38               		.stabs	"long long _Fract:t(0,25)=r(0,9);8;0;",128,0,0,0
+  39               		.stabs	"unsigned short _Fract:t(0,26)=r(0,9);1;0;",128,0,0,0
+  40               		.stabs	"unsigned _Fract:t(0,27)=r(0,9);2;0;",128,0,0,0
+  41               		.stabs	"unsigned long _Fract:t(0,28)=r(0,9);4;0;",128,0,0,0
+  42               		.stabs	"unsigned long long _Fract:t(0,29)=r(0,9);8;0;",128,0,0,0
+  43               		.stabs	"_Sat short _Fract:t(0,30)=r(0,9);1;0;",128,0,0,0
+  44               		.stabs	"_Sat _Fract:t(0,31)=r(0,9);2;0;",128,0,0,0
+  45               		.stabs	"_Sat long _Fract:t(0,32)=r(0,9);4;0;",128,0,0,0
+  46               		.stabs	"_Sat long long _Fract:t(0,33)=r(0,9);8;0;",128,0,0,0
+  47               		.stabs	"_Sat unsigned short _Fract:t(0,34)=r(0,9);1;0;",128,0,0,0
+  48               		.stabs	"_Sat unsigned _Fract:t(0,35)=r(0,9);2;0;",128,0,0,0
+  49               		.stabs	"_Sat unsigned long _Fract:t(0,36)=r(0,9);4;0;",128,0,0,0
+  50               		.stabs	"_Sat unsigned long long _Fract:t(0,37)=r(0,9);8;0;",128,0,0,0
+  51               		.stabs	"short _Accum:t(0,38)=r(0,9);2;0;",128,0,0,0
+  52               		.stabs	"long _Accum:t(0,39)=r(0,9);8;0;",128,0,0,0
+  53               		.stabs	"long long _Accum:t(0,40)=r(0,9);8;0;",128,0,0,0
+  54               		.stabs	"unsigned short _Accum:t(0,41)=r(0,9);2;0;",128,0,0,0
+  55               		.stabs	"unsigned _Accum:t(0,42)=r(0,9);4;0;",128,0,0,0
+  56               		.stabs	"unsigned long _Accum:t(0,43)=r(0,9);8;0;",128,0,0,0
+  57               		.stabs	"unsigned long long _Accum:t(0,44)=r(0,9);8;0;",128,0,0,0
+  58               		.stabs	"_Sat short _Accum:t(0,45)=r(0,9);2;0;",128,0,0,0
+  59               		.stabs	"_Sat _Accum:t(0,46)=r(0,9);4;0;",128,0,0,0
+  60               		.stabs	"_Sat long _Accum:t(0,47)=r(0,9);8;0;",128,0,0,0
+  61               		.stabs	"_Sat long long _Accum:t(0,48)=r(0,9);8;0;",128,0,0,0
+  62               		.stabs	"_Sat unsigned short _Accum:t(0,49)=r(0,9);2;0;",128,0,0,0
+  63               		.stabs	"_Sat unsigned _Accum:t(0,50)=r(0,9);4;0;",128,0,0,0
+  64               		.stabs	"_Sat unsigned long _Accum:t(0,51)=r(0,9);8;0;",128,0,0,0
+  65               		.stabs	"_Sat unsigned long long _Accum:t(0,52)=r(0,9);8;0;",128,0,0,0
+  66               		.stabs	"void:t(0,4)",128,0,0,0
+  67               		.stabs	"wchar_t:t(0,53)=r(0,53);-32768;32767;",128,0,0,0
+  68               		.stabs	"bool:t(0,54)=@s8;-16;",128,0,0,0
+  69               		.stabs	"__vtbl_ptr_type:t(0,55)=*(0,56)=f(0,9)",128,0,0,0
+  70               		.stabs	"decltype(nullptr):t(0,57)=(0,57)",128,0,0,0
+  71               		.stabs	"int8_t:t(0,58)=(0,16)",128,0,121,0
+  72               		.stabs	"uint8_t:t(0,59)=(0,13)",128,0,122,0
+  73               		.stabs	"int16_t:t(0,60)=(0,9)",128,0,123,0
+  74               		.stabs	"uint16_t:t(0,61)=(0,12)",128,0,124,0
+  75               		.stabs	"int32_t:t(0,62)=(0,15)",128,0,125,0
+  76               		.stabs	"uint32_t:t(0,63)=(0,11)",128,0,126,0
+  77               		.stabs	"int64_t:t(0,64)=(0,14)",128,0,128,0
+  78               		.stabs	"uint64_t:t(0,65)=(0,10)",128,0,129,0
+  79               		.stabs	"intptr_t:t(0,66)=(0,60)",128,0,142,0
+  80               		.stabs	"uintptr_t:t(0,67)=(0,61)",128,0,147,0
+  81               		.stabs	"int_least8_t:t(0,68)=(0,58)",128,0,159,0
+  82               		.stabs	"uint_least8_t:t(0,69)=(0,59)",128,0,164,0
+  83               		.stabs	"int_least16_t:t(0,70)=(0,60)",128,0,169,0
+  84               		.stabs	"uint_least16_t:t(0,71)=(0,61)",128,0,174,0
+  85               		.stabs	"int_least32_t:t(0,72)=(0,62)",128,0,179,0
+  86               		.stabs	"uint_least32_t:t(0,73)=(0,63)",128,0,184,0
+  87               		.stabs	"int_least64_t:t(0,74)=(0,64)",128,0,192,0
+  88               		.stabs	"uint_least64_t:t(0,75)=(0,65)",128,0,199,0
+  89               		.stabs	"int_fast8_t:t(0,76)=(0,58)",128,0,213,0
+  90               		.stabs	"uint_fast8_t:t(0,77)=(0,59)",128,0,218,0
+  91               		.stabs	"int_fast16_t:t(0,78)=(0,60)",128,0,223,0
+  92               		.stabs	"uint_fast16_t:t(0,79)=(0,61)",128,0,228,0
+  93               		.stabs	"int_fast32_t:t(0,80)=(0,62)",128,0,233,0
+  94               		.stabs	"uint_fast32_t:t(0,81)=(0,63)",128,0,238,0
+  95               		.stabs	"int_fast64_t:t(0,82)=(0,64)",128,0,246,0
+  96               		.stabs	"uint_fast64_t:t(0,83)=(0,65)",128,0,253,0
+  97               		.stabs	"intmax_t:t(0,84)=(0,64)",128,0,273,0
+  98               		.stabs	"uintmax_t:t(0,85)=(0,65)",128,0,278,0
+  99               		.stabs	"int_farptr_t:t(0,86)=(0,62)",128,0,77,0
+ 100               		.stabs	"uint_farptr_t:t(0,87)=(0,63)",128,0,81,0
+ 101               		.stabs	"._0:Tt(0,88)=s3low:(0,13),0,8;high:(0,13),8,8;extended:(0,13),16,8;;",128,0,240,0
+ 102               		.stabs	"__fuse_t:t(0,88)",128,0,244,0
+ 103               		.stabs	"__vector_5:F(0,4)",36,0,10,__vector_5
+ 104               	.global	__vector_5
+ 105               		.type	__vector_5, @function
+ 106               	__vector_5:
+ 107               		.stabd	46,0,0
+   1:HumanSensor.cpp **** #include <avr/io.h>
+   2:HumanSensor.cpp **** #include <avr/interrupt.h>
+   3:HumanSensor.cpp **** #include <avr/iotn2313.h>
+   4:HumanSensor.cpp **** #include <util/delay.h>
+   5:HumanSensor.cpp **** 
+   6:HumanSensor.cpp **** //#define
+   7:HumanSensor.cpp **** 
+   8:HumanSensor.cpp **** unsigned char PWM_val = 0;
+   9:HumanSensor.cpp **** unsigned char timecounter = 0;
+  10:HumanSensor.cpp **** ISR(TIMER1_OVF_vect)
+  11:HumanSensor.cpp **** {
+ 108               		.stabn	68,0,11,.LM0-.LFBB1
+ 109               	.LM0:
+ 110               	.LFBB1:
+ 111 0000 1F92      		push r1
+ 112 0002 0F92      		push r0
+ 113 0004 0FB6      		in r0,__SREG__
+ 114 0006 0F92      		push r0
+ 115 0008 1124      		clr __zero_reg__
+ 116 000a 2F93      		push r18
+ 117 000c 8F93      		push r24
+ 118 000e 9F93      		push r25
+ 119               	/* prologue: Signal */
+ 120               	/* frame size = 0 */
+ 121               	/* stack size = 6 */
+ 122               	.L__stack_usage = 6
+  12:HumanSensor.cpp **** 
+  13:HumanSensor.cpp **** 	if(timecounter<1)
+ 123               		.stabn	68,0,13,.LM1-.LFBB1
+ 124               	.LM1:
+ 125 0010 8091 0000 		lds r24,timecounter
+ 126 0014 8111      		cpse r24,__zero_reg__
+ 127 0016 00C0      		rjmp .L5
+  14:HumanSensor.cpp **** 	{
+  15:HumanSensor.cpp **** 		timecounter++;
+ 128               		.stabn	68,0,15,.LM2-.LFBB1
+ 129               	.LM2:
+ 130 0018 81E0      		ldi r24,lo8(1)
+ 131 001a 8093 0000 		sts timecounter,r24
+ 132 001e 00C0      		rjmp .L1
+ 133               	.L5:
+  16:HumanSensor.cpp **** 	}
+  17:HumanSensor.cpp **** 	else
+  18:HumanSensor.cpp **** 	{
+  19:HumanSensor.cpp **** 
+  20:HumanSensor.cpp **** 		while(PWM_val>0)
+ 134               		.stabn	68,0,20,.LM3-.LFBB1
+ 135               	.LM3:
+ 136 0020 8091 0000 		lds r24,PWM_val
+ 137 0024 8823      		tst r24
+ 138 0026 01F0      		breq .L7
+ 139               	.LBB11:
+ 140               	.LBB12:
+ 141               		.stabs	"/usr/lib/avr/include/util/delay.h",132,0,0,.Ltext1
+ 142               	.Ltext1:
+   1:/usr/lib/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/lib/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/usr/lib/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/usr/lib/avr/include/util/delay.h ****    All rights reserved.
+   5:/usr/lib/avr/include/util/delay.h **** 
+   6:/usr/lib/avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/usr/lib/avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/usr/lib/avr/include/util/delay.h **** 
+   9:/usr/lib/avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/usr/lib/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/usr/lib/avr/include/util/delay.h **** 
+  12:/usr/lib/avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/usr/lib/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/usr/lib/avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/usr/lib/avr/include/util/delay.h ****      distribution.
+  16:/usr/lib/avr/include/util/delay.h **** 
+  17:/usr/lib/avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/usr/lib/avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/usr/lib/avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/usr/lib/avr/include/util/delay.h **** 
+  21:/usr/lib/avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/usr/lib/avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/usr/lib/avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/usr/lib/avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/usr/lib/avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/usr/lib/avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/usr/lib/avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/usr/lib/avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/usr/lib/avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/usr/lib/avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/usr/lib/avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/usr/lib/avr/include/util/delay.h **** 
+  33:/usr/lib/avr/include/util/delay.h **** /* $Id$ */
+  34:/usr/lib/avr/include/util/delay.h **** 
+  35:/usr/lib/avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/usr/lib/avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/usr/lib/avr/include/util/delay.h **** 
+  38:/usr/lib/avr/include/util/delay.h **** #ifndef __HAS_DELAY_CYCLES
+  39:/usr/lib/avr/include/util/delay.h **** #define __HAS_DELAY_CYCLES 1
+  40:/usr/lib/avr/include/util/delay.h **** #endif
+  41:/usr/lib/avr/include/util/delay.h **** 
+  42:/usr/lib/avr/include/util/delay.h **** #include <inttypes.h>
+  43:/usr/lib/avr/include/util/delay.h **** #include <util/delay_basic.h>
+  44:/usr/lib/avr/include/util/delay.h **** #include <math.h>
+  45:/usr/lib/avr/include/util/delay.h **** 
+  46:/usr/lib/avr/include/util/delay.h **** /** \file */
+  47:/usr/lib/avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  48:/usr/lib/avr/include/util/delay.h ****     \code
+  49:/usr/lib/avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  50:/usr/lib/avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  51:/usr/lib/avr/include/util/delay.h ****     #include <util/delay.h>
+  52:/usr/lib/avr/include/util/delay.h ****     \endcode
+  53:/usr/lib/avr/include/util/delay.h **** 
+  54:/usr/lib/avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  55:/usr/lib/avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  56:/usr/lib/avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  57:/usr/lib/avr/include/util/delay.h ****     used.
+  58:/usr/lib/avr/include/util/delay.h **** 
+  59:/usr/lib/avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  60:/usr/lib/avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  61:/usr/lib/avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  62:/usr/lib/avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  63:/usr/lib/avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  64:/usr/lib/avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  65:/usr/lib/avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  66:/usr/lib/avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  67:/usr/lib/avr/include/util/delay.h **** 
+  68:/usr/lib/avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  69:/usr/lib/avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  70:/usr/lib/avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  71:/usr/lib/avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  72:/usr/lib/avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  73:/usr/lib/avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  74:/usr/lib/avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  75:/usr/lib/avr/include/util/delay.h ****     routines linked into the application.
+  76:/usr/lib/avr/include/util/delay.h **** 
+  77:/usr/lib/avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  78:/usr/lib/avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  79:/usr/lib/avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  80:/usr/lib/avr/include/util/delay.h **** 
+  81:/usr/lib/avr/include/util/delay.h **** */
+  82:/usr/lib/avr/include/util/delay.h **** 
+  83:/usr/lib/avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  84:/usr/lib/avr/include/util/delay.h **** static inline void _delay_us(double __us) __attribute__((always_inline));
+  85:/usr/lib/avr/include/util/delay.h **** static inline void _delay_ms(double __ms) __attribute__((always_inline));
+  86:/usr/lib/avr/include/util/delay.h **** #endif
+  87:/usr/lib/avr/include/util/delay.h **** 
+  88:/usr/lib/avr/include/util/delay.h **** #ifndef F_CPU
+  89:/usr/lib/avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  90:/usr/lib/avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  91:/usr/lib/avr/include/util/delay.h **** # define F_CPU 1000000UL
+  92:/usr/lib/avr/include/util/delay.h **** #endif
+  93:/usr/lib/avr/include/util/delay.h **** 
+  94:/usr/lib/avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+  95:/usr/lib/avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+  96:/usr/lib/avr/include/util/delay.h **** #endif
+  97:/usr/lib/avr/include/util/delay.h **** 
+  98:/usr/lib/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+  99:/usr/lib/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 100:/usr/lib/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 101:/usr/lib/avr/include/util/delay.h **** #  include <math.h>
+ 102:/usr/lib/avr/include/util/delay.h **** #endif
+ 103:/usr/lib/avr/include/util/delay.h **** 
+ 104:/usr/lib/avr/include/util/delay.h **** /**
+ 105:/usr/lib/avr/include/util/delay.h ****    \ingroup util_delay
+ 106:/usr/lib/avr/include/util/delay.h **** 
+ 107:/usr/lib/avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 108:/usr/lib/avr/include/util/delay.h **** 
+ 109:/usr/lib/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 110:/usr/lib/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 111:/usr/lib/avr/include/util/delay.h **** 
+ 112:/usr/lib/avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 113:/usr/lib/avr/include/util/delay.h **** 
+ 114:/usr/lib/avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 115:/usr/lib/avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 116:/usr/lib/avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 117:/usr/lib/avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 118:/usr/lib/avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 119:/usr/lib/avr/include/util/delay.h **** 
+ 120:/usr/lib/avr/include/util/delay.h ****    If the avr-gcc toolchain has __builtin_avr_delay_cycles(unsigned long)
+ 121:/usr/lib/avr/include/util/delay.h ****    support, maximal possible delay is 4294967.295 ms/ F_CPU in MHz. For
+ 122:/usr/lib/avr/include/util/delay.h ****    values greater than the maximal possible delay, overflows results in
+ 123:/usr/lib/avr/include/util/delay.h ****    no delay i.e., 0ms.
+ 124:/usr/lib/avr/include/util/delay.h **** 
+ 125:/usr/lib/avr/include/util/delay.h ****    Conversion of __us into clock cycles may not always result in integer.
+ 126:/usr/lib/avr/include/util/delay.h ****    By default, the clock cycles rounded up to next integer. This ensures that
+ 127:/usr/lib/avr/include/util/delay.h ****    the user gets atleast __us microseconds of delay.
+ 128:/usr/lib/avr/include/util/delay.h **** 
+ 129:/usr/lib/avr/include/util/delay.h ****    Alternatively, user can define __DELAY_ROUND_DOWN__ and __DELAY_ROUND_CLOSEST__
+ 130:/usr/lib/avr/include/util/delay.h ****    to round down and round to closest integer.
+ 131:/usr/lib/avr/include/util/delay.h **** 
+ 132:/usr/lib/avr/include/util/delay.h ****    Note: The new implementation of _delay_ms(double __ms) with 
+ 133:/usr/lib/avr/include/util/delay.h ****     __builtin_avr_delay_cycles(unsigned long) support is not backward compatible. 
+ 134:/usr/lib/avr/include/util/delay.h ****    User can define __DELAY_BACKWARD_COMPATIBLE__ to get a backward compatible delay.
+ 135:/usr/lib/avr/include/util/delay.h ****    Also, the backward compatible
+ 136:/usr/lib/avr/include/util/delay.h ****    algorithm will be chosen if the code is compiled in a <em>freestanding
+ 137:/usr/lib/avr/include/util/delay.h ****    environment</em> (GCC option \c -ffreestanding), as the math functions
+ 138:/usr/lib/avr/include/util/delay.h ****    required for rounding are not available to the compiler then.
+ 139:/usr/lib/avr/include/util/delay.h **** 
+ 140:/usr/lib/avr/include/util/delay.h ****  */
+ 141:/usr/lib/avr/include/util/delay.h **** void
+ 142:/usr/lib/avr/include/util/delay.h **** _delay_ms(double __ms)
+ 143:/usr/lib/avr/include/util/delay.h **** {
+ 144:/usr/lib/avr/include/util/delay.h **** 	double __tmp ; 
+ 145:/usr/lib/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 146:/usr/lib/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 147:/usr/lib/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 148:/usr/lib/avr/include/util/delay.h **** 	uint32_t __ticks_dc;
+ 149:/usr/lib/avr/include/util/delay.h **** 	extern void __builtin_avr_delay_cycles(unsigned long);
+ 150:/usr/lib/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 1e3) * __ms;
+ 151:/usr/lib/avr/include/util/delay.h **** 
+ 152:/usr/lib/avr/include/util/delay.h **** 	#if defined(__DELAY_ROUND_DOWN__)
+ 153:/usr/lib/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)fabs(__tmp);
+ 154:/usr/lib/avr/include/util/delay.h **** 
+ 155:/usr/lib/avr/include/util/delay.h **** 	#elif defined(__DELAY_ROUND_CLOSEST__)
+ 156:/usr/lib/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(fabs(__tmp)+0.5);
+ 157:/usr/lib/avr/include/util/delay.h **** 
+ 158:/usr/lib/avr/include/util/delay.h **** 	#else
+ 159:/usr/lib/avr/include/util/delay.h **** 		//round up by default
+ 160:/usr/lib/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+ 161:/usr/lib/avr/include/util/delay.h **** 	#endif
+ 162:/usr/lib/avr/include/util/delay.h **** 
+ 163:/usr/lib/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 143               		.stabn	68,0,163,.LM4-.LFBB1
+ 144               	.LM4:
+ 145 0028 87E8      		ldi r24,lo8(4999)
+ 146 002a 93E1      		ldi r25,hi8(4999)
+ 147 002c 0197      	1:	sbiw r24,1
+ 148 002e 01F4      		brne 1b
+ 149 0030 00C0      		rjmp .
+ 150 0032 0000      		nop
+ 151               	.LBE12:
+ 152               	.LBE11:
+ 153               		.stabs	"HumanSensor.cpp",132,0,0,.Ltext2
+ 154               	.Ltext2:
+  21:HumanSensor.cpp **** 		{
+  22:HumanSensor.cpp **** 			_delay_ms(5);
+  23:HumanSensor.cpp **** 			OCR0A = PWM_val;
+ 155               		.stabn	68,0,23,.LM5-.LFBB1
+ 156               	.LM5:
+ 157 0034 8091 0000 		lds r24,PWM_val
+ 158 0038 86BF      		out 0x36,r24
+  24:HumanSensor.cpp **** 			PWM_val--;
+ 159               		.stabn	68,0,24,.LM6-.LFBB1
+ 160               	.LM6:
+ 161 003a 8091 0000 		lds r24,PWM_val
+ 162 003e 8150      		subi r24,lo8(-(-1))
+ 163 0040 8093 0000 		sts PWM_val,r24
+ 164 0044 00C0      		rjmp .L5
+ 165               	.L7:
+  25:HumanSensor.cpp **** 		}
+  26:HumanSensor.cpp **** 		OCR0A = 0;
+ 166               		.stabn	68,0,26,.LM7-.LFBB1
+ 167               	.LM7:
+ 168 0046 16BE      		out 0x36,__zero_reg__
+ 169               	.LBB13:
+ 170               	.LBB14:
+ 171               		.stabs	"/usr/lib/avr/include/util/delay.h",132,0,0,.Ltext3
+ 172               	.Ltext3:
+ 173               		.stabn	68,0,163,.LM8-.LFBB1
+ 174               	.LM8:
+ 175 0048 9FEF      		ldi r25,lo8(1599999)
+ 176 004a 29E6      		ldi r18,hi8(1599999)
+ 177 004c 88E1      		ldi r24,hlo8(1599999)
+ 178 004e 9150      	1:	subi r25,1
+ 179 0050 2040      		sbci r18,0
+ 180 0052 8040      		sbci r24,0
+ 181 0054 01F4      		brne 1b
+ 182 0056 00C0      		rjmp .
+ 183 0058 0000      		nop
+ 184               	.LBE14:
+ 185               	.LBE13:
+ 186               		.stabs	"HumanSensor.cpp",132,0,0,.Ltext4
+ 187               	.Ltext4:
+  27:HumanSensor.cpp **** 		_delay_ms(2000);
+  28:HumanSensor.cpp **** 		GIMSK |=(1<<INT0);
+ 188               		.stabn	68,0,28,.LM9-.LFBB1
+ 189               	.LM9:
+ 190 005a 8BB7      		in r24,0x3b
+ 191 005c 8064      		ori r24,lo8(64)
+ 192 005e 8BBF      		out 0x3b,r24
+ 193               	.L1:
+ 194               	/* epilogue start */
+  29:HumanSensor.cpp **** 	}
+  30:HumanSensor.cpp **** 
+  31:HumanSensor.cpp **** }
+ 195               		.stabn	68,0,31,.LM10-.LFBB1
+ 196               	.LM10:
+ 197 0060 9F91      		pop r25
+ 198 0062 8F91      		pop r24
+ 199 0064 2F91      		pop r18
+ 200 0066 0F90      		pop r0
+ 201 0068 0FBE      		out __SREG__,r0
+ 202 006a 0F90      		pop r0
+ 203 006c 1F90      		pop r1
+ 204 006e 1895      		reti
+ 205               		.size	__vector_5, .-__vector_5
+ 206               	.Lscope1:
+ 207               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 208               		.stabd	78,0,0
+ 209               		.stabs	"__vector_1:F(0,4)",36,0,33,__vector_1
+ 210               	.global	__vector_1
+ 211               		.type	__vector_1, @function
+ 212               	__vector_1:
+ 213               		.stabd	46,0,0
+  32:HumanSensor.cpp **** 
+  33:HumanSensor.cpp **** ISR(INT0_vect)
+  34:HumanSensor.cpp **** {
+ 214               		.stabn	68,0,34,.LM11-.LFBB2
+ 215               	.LM11:
+ 216               	.LFBB2:
+ 217 0070 1F92      		push r1
+ 218 0072 0F92      		push r0
+ 219 0074 0FB6      		in r0,__SREG__
+ 220 0076 0F92      		push r0
+ 221 0078 1124      		clr __zero_reg__
+ 222 007a 8F93      		push r24
+ 223 007c 9F93      		push r25
+ 224               	/* prologue: Signal */
+ 225               	/* frame size = 0 */
+ 226               	/* stack size = 5 */
+ 227               	.L__stack_usage = 5
+  35:HumanSensor.cpp **** 	GIMSK &= ~(1<<INT0);
+ 228               		.stabn	68,0,35,.LM12-.LFBB2
+ 229               	.LM12:
+ 230 007e 8BB7      		in r24,0x3b
+ 231 0080 8F7B      		andi r24,lo8(-65)
+ 232 0082 8BBF      		out 0x3b,r24
+ 233               	.L9:
+  36:HumanSensor.cpp **** 
+  37:HumanSensor.cpp **** 	while(PWM_val < 255)
+ 234               		.stabn	68,0,37,.LM13-.LFBB2
+ 235               	.LM13:
+ 236 0084 8091 0000 		lds r24,PWM_val
+ 237 0088 8F3F      		cpi r24,lo8(-1)
+ 238 008a 01F0      		breq .L11
+ 239               	.LBB15:
+ 240               	.LBB16:
+ 241               		.stabs	"/usr/lib/avr/include/util/delay.h",132,0,0,.Ltext5
+ 242               	.Ltext5:
+ 243               		.stabn	68,0,163,.LM14-.LFBB2
+ 244               	.LM14:
+ 245 008c 87E8      		ldi r24,lo8(4999)
+ 246 008e 93E1      		ldi r25,hi8(4999)
+ 247 0090 0197      	1:	sbiw r24,1
+ 248 0092 01F4      		brne 1b
+ 249 0094 00C0      		rjmp .
+ 250 0096 0000      		nop
+ 251               	.LBE16:
+ 252               	.LBE15:
+ 253               		.stabs	"HumanSensor.cpp",132,0,0,.Ltext6
+ 254               	.Ltext6:
+  38:HumanSensor.cpp **** 	{
+  39:HumanSensor.cpp **** 		_delay_ms(5);
+  40:HumanSensor.cpp **** 		OCR0A = PWM_val;
+ 255               		.stabn	68,0,40,.LM15-.LFBB2
+ 256               	.LM15:
+ 257 0098 8091 0000 		lds r24,PWM_val
+ 258 009c 86BF      		out 0x36,r24
+  41:HumanSensor.cpp **** 		PWM_val++;
+ 259               		.stabn	68,0,41,.LM16-.LFBB2
+ 260               	.LM16:
+ 261 009e 8091 0000 		lds r24,PWM_val
+ 262 00a2 8F5F      		subi r24,lo8(-(1))
+ 263 00a4 8093 0000 		sts PWM_val,r24
+ 264 00a8 00C0      		rjmp .L9
+ 265               	.L11:
+  42:HumanSensor.cpp **** 	}
+  43:HumanSensor.cpp **** 	OCR0A = 255;
+ 266               		.stabn	68,0,43,.LM17-.LFBB2
+ 267               	.LM17:
+ 268 00aa 86BF      		out 0x36,r24
+  44:HumanSensor.cpp **** 
+  45:HumanSensor.cpp **** 	timecounter = 0;
+ 269               		.stabn	68,0,45,.LM18-.LFBB2
+ 270               	.LM18:
+ 271 00ac 1092 0000 		sts timecounter,__zero_reg__
+  46:HumanSensor.cpp **** 	TCNT1L = 0;
+ 272               		.stabn	68,0,46,.LM19-.LFBB2
+ 273               	.LM19:
+ 274 00b0 1CBC      		out 0x2c,__zero_reg__
+  47:HumanSensor.cpp **** 	TCNT1H = 0;
+ 275               		.stabn	68,0,47,.LM20-.LFBB2
+ 276               	.LM20:
+ 277 00b2 1DBC      		out 0x2d,__zero_reg__
+  48:HumanSensor.cpp **** 	TCCR1B |=(1<<CS12)|(0<<CS11)|(1<<CS10); //  Timer1 Prescaler 1024
+ 278               		.stabn	68,0,48,.LM21-.LFBB2
+ 279               	.LM21:
+ 280 00b4 8EB5      		in r24,0x2e
+ 281 00b6 8560      		ori r24,lo8(5)
+ 282 00b8 8EBD      		out 0x2e,r24
+ 283               	/* epilogue start */
+  49:HumanSensor.cpp **** }
+ 284               		.stabn	68,0,49,.LM22-.LFBB2
+ 285               	.LM22:
+ 286 00ba 9F91      		pop r25
+ 287 00bc 8F91      		pop r24
+ 288 00be 0F90      		pop r0
+ 289 00c0 0FBE      		out __SREG__,r0
+ 290 00c2 0F90      		pop r0
+ 291 00c4 1F90      		pop r1
+ 292 00c6 1895      		reti
+ 293               		.size	__vector_1, .-__vector_1
+ 294               	.Lscope2:
+ 295               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 296               		.stabd	78,0,0
+ 297               		.section	.text.startup,"ax",@progbits
+ 298               		.stabs	"main:F(0,9)",36,0,56,main
+ 299               	.global	main
+ 300               		.type	main, @function
+ 301               	main:
+ 302               		.stabd	46,0,0
+  50:HumanSensor.cpp **** 
+  51:HumanSensor.cpp **** 
+  52:HumanSensor.cpp **** 
+  53:HumanSensor.cpp **** 
+  54:HumanSensor.cpp **** 
+  55:HumanSensor.cpp **** 
+  56:HumanSensor.cpp **** int main(void)
+  57:HumanSensor.cpp **** {
+ 303               		.stabn	68,0,57,.LM23-.LFBB3
+ 304               	.LM23:
+ 305               	.LFBB3:
+ 306               	/* prologue: function */
+ 307               	/* frame size = 0 */
+ 308               	/* stack size = 0 */
+ 309               	.L__stack_usage = 0
+  58:HumanSensor.cpp **** 
+  59:HumanSensor.cpp **** 	// --------------------- Init  Ports----------------------------------
+  60:HumanSensor.cpp **** 
+  61:HumanSensor.cpp **** 	DDRD &= ~(1<<INT0); //Swith on INT0 as input
+ 310               		.stabn	68,0,61,.LM24-.LFBB3
+ 311               	.LM24:
+ 312 0000 8E98      		cbi 0x11,6
+  62:HumanSensor.cpp **** 	DDRB |= (1<< PB2)|(1<<PB0); //Put  as output PB2(OCA0)
+ 313               		.stabn	68,0,62,.LM25-.LFBB3
+ 314               	.LM25:
+ 315 0002 87B3      		in r24,0x17
+ 316 0004 8560      		ori r24,lo8(5)
+ 317 0006 87BB      		out 0x17,r24
+  63:HumanSensor.cpp **** 	PORTB = 0x00;
+ 318               		.stabn	68,0,63,.LM26-.LFBB3
+ 319               	.LM26:
+ 320 0008 18BA      		out 0x18,__zero_reg__
+  64:HumanSensor.cpp **** 
+  65:HumanSensor.cpp **** 	//---------------------External Interrupt Init----------------------
+  66:HumanSensor.cpp **** 
+  67:HumanSensor.cpp **** 	GIMSK |=(1<<INT0); //Switch External Interrupt  INT0
+ 321               		.stabn	68,0,67,.LM27-.LFBB3
+ 322               	.LM27:
+ 323 000a 8BB7      		in r24,0x3b
+ 324 000c 8064      		ori r24,lo8(64)
+ 325 000e 8BBF      		out 0x3b,r24
+  68:HumanSensor.cpp **** 	MCUCR |=(1<<ISC01)|(1<<ISC00); //Rising Edge Init
+ 326               		.stabn	68,0,68,.LM28-.LFBB3
+ 327               	.LM28:
+ 328 0010 85B7      		in r24,0x35
+ 329 0012 8360      		ori r24,lo8(3)
+ 330 0014 85BF      		out 0x35,r24
+  69:HumanSensor.cpp **** 
+  70:HumanSensor.cpp **** 	//--------------------- Fast PWM init--------------------------------------
+  71:HumanSensor.cpp **** 
+  72:HumanSensor.cpp **** 	TCCR0A |=(1<<COM0A1)|(1<<WGM00); //Timer0 Fast PWM Mode
+ 331               		.stabn	68,0,72,.LM29-.LFBB3
+ 332               	.LM29:
+ 333 0016 80B7      		in r24,0x30
+ 334 0018 8168      		ori r24,lo8(-127)
+ 335 001a 80BF      		out 0x30,r24
+  73:HumanSensor.cpp **** 	TCCR0B |=(1<<CS02); // Timer0 Prescaler  256
+ 336               		.stabn	68,0,73,.LM30-.LFBB3
+ 337               	.LM30:
+ 338 001c 83B7      		in r24,0x33
+ 339 001e 8460      		ori r24,lo8(4)
+ 340 0020 83BF      		out 0x33,r24
+  74:HumanSensor.cpp **** 	OCR0A = 0x00;
+ 341               		.stabn	68,0,74,.LM31-.LFBB3
+ 342               	.LM31:
+ 343 0022 16BE      		out 0x36,__zero_reg__
+  75:HumanSensor.cpp **** 
+  76:HumanSensor.cpp **** 	//---------------------Timer 1 Interrupt Enable---------------------
+  77:HumanSensor.cpp **** 
+  78:HumanSensor.cpp **** 	TIMSK |= (1<<TOIE1); //Timer1 Interrupt Enable
+ 344               		.stabn	68,0,78,.LM32-.LFBB3
+ 345               	.LM32:
+ 346 0024 89B7      		in r24,0x39
+ 347 0026 8068      		ori r24,lo8(-128)
+ 348 0028 89BF      		out 0x39,r24
+  79:HumanSensor.cpp **** 
+  80:HumanSensor.cpp **** 	sei();
+ 349               		.stabn	68,0,80,.LM33-.LFBB3
+ 350               	.LM33:
+ 351               	/* #APP */
+ 352               	 ;  80 "HumanSensor.cpp" 1
+ 353 002a 7894      		sei
+ 354               	 ;  0 "" 2
+ 355               	/* #NOAPP */
+ 356               	.L13:
+  56:HumanSensor.cpp **** {
+ 357               		.stabn	68,0,56,.LM34-.LFBB3
+ 358               	.LM34:
+ 359 002c 00C0      		rjmp .L13
+ 360               		.size	main, .-main
+ 361               	.Lscope3:
+ 362               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 363               		.stabd	78,0,0
+ 364               	.global	timecounter
+ 365               		.section .bss
+ 366               		.type	timecounter, @object
+ 367               		.size	timecounter, 1
+ 368               	timecounter:
+ 369 0000 00        		.zero	1
+ 370               	.global	PWM_val
+ 371               		.type	PWM_val, @object
+ 372               		.size	PWM_val, 1
+ 373               	PWM_val:
+ 374 0001 00        		.zero	1
+ 375               		.stabs	"PWM_val:G(0,13)",32,0,8,0
+ 376               		.stabs	"timecounter:G(0,13)",32,0,9,0
+ 377               		.text
+ 378               		.stabs	"",100,0,0,.Letext0
+ 379               	.Letext0:
+ 380               		.ident	"GCC: (GNU) 4.9.2"
+ 381               	.global __do_clear_bss
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HumanSensor.cpp
+     /tmp/ccMj9Ym2.s:2      *ABS*:000000000000003d __SP_L__
+     /tmp/ccMj9Ym2.s:3      *ABS*:000000000000003f __SREG__
+     /tmp/ccMj9Ym2.s:4      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccMj9Ym2.s:5      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccMj9Ym2.s:106    .text:0000000000000000 __vector_5
+     /tmp/ccMj9Ym2.s:368    .bss:0000000000000000 timecounter
+     /tmp/ccMj9Ym2.s:373    .bss:0000000000000001 PWM_val
+     /tmp/ccMj9Ym2.s:212    .text:0000000000000070 __vector_1
+     /tmp/ccMj9Ym2.s:301    .text.startup:0000000000000000 main
+
+UNDEFINED SYMBOLS
+__do_clear_bss
